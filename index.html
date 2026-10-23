@@ -8,322 +8,340 @@
 <meta name="description" content="Portafolio de Jerko Bakulic, diseñador gráfico: material POP, branding, publicidad y campañas B2B.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Manrope:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: estilo showroom. Cada categoría es una pantalla completa con su pieza estrella, título arriba y dos acciones abajo; luego la grilla de proyectos con selector segmentado. Igual en móvil y escritorio. */
+/* Layout: mesa de diseñador. Nombre gigante con piezas sueltas encima, mosaico de tamaños mixtos, un caso contado en tres pasos, franja azul para XBREIN e índice tipográfico con vista previa al pasar el cursor. */
 :root{
-  --bg:#ffffff;
-  --surface:#f4f4f4;
-  --fg:#171a20;
-  --fg-2:#5c5e62;
-  --line:#e2e3e3;
-  --primary:#3e6ae1;
-  --primary-hover:#3457b1;
-  --glass:rgba(244,244,244,.68);
-  --glass-hover:rgba(255,255,255,.9);
-  --on-img:#ffffff;
-  --scrim:rgba(0,0,0,.97);
-  --f:"Montserrat","Gotham","Helvetica Neue",Arial,sans-serif;
+  --bg:#f4f4f1;
+  --card:#ffffff;
+  --ink:#121212;
+  --ink-2:#6b6b66;
+  --line:#d9d9d3;
+  --blue:#2f4bff;
+  --on-blue:#ffffff;
+  --scrim:rgba(10,10,10,.97);
+  --f-disp:"Syne","Arial Black",Arial,sans-serif;
+  --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"DM Mono",ui-monospace,Consolas,monospace;
   --gl:max(16px, env(safe-area-inset-left, 0px));
   --gr:max(16px, env(safe-area-inset-right, 0px));
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0f1012;--surface:#1a1b1e;--fg:#eeeeee;--fg-2:#a2a3a6;--line:#2a2b2f;--glass:rgba(40,41,45,.7);--glass-hover:rgba(60,61,66,.9);color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0f1012;--surface:#1a1b1e;--fg:#eeeeee;--fg-2:#a2a3a6;--line:#2a2b2f;--glass:rgba(40,41,45,.7);--glass-hover:rgba(60,61,66,.9);color-scheme:dark}
+  --bg:#111111;--card:#1b1b1b;--ink:#f1f1ec;--ink-2:#9b9b95;--line:#2d2d2b;--blue:#5a70ff;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#111111;--card:#1b1b1b;--ink:#f1f1ec;--ink-2:#9b9b95;--line:#2d2d2b;--blue:#5a70ff;color-scheme:dark}
 
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:41;background:transparent;transition:background .3s}
-body.solid::before{background:var(--bg)}
+img{max-width:100%}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.wrap{max-width:1440px;margin:0 auto;padding-left:var(--gl);padding-right:var(--gr)}
+@media (min-width:900px){.wrap{padding-left:max(40px,env(safe-area-inset-left,0px));padding-right:max(40px,env(safe-area-inset-right,0px))}}
+.mono{font-family:var(--f-mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+.dim{color:var(--ink-2)}
 
 /* Header */
-.hdr{position:fixed;top:0;left:0;right:0;z-index:40;padding-top:env(safe-area-inset-top,0px);transition:background .3s,color .3s}
-.hdr-in{height:56px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
-.logo{font-weight:700;letter-spacing:.32em;font-size:13px;text-transform:uppercase;white-space:nowrap}
-.hdr nav{display:flex;gap:4px}
-.hdr nav a,.menu-btn{font-weight:500;font-size:14px;padding:6px 14px;border-radius:4px;transition:background .25s}
-.hdr nav a:hover,.menu-btn:hover{background:rgba(127,127,127,.18)}
-.hdr .right{display:flex;gap:4px;align-items:center}
-.menu-btn{background:none;border:0;color:inherit;font-family:inherit;cursor:pointer}
-.hdr{color:var(--on-img)}
-.hdr.solid{background:var(--bg);color:var(--fg);box-shadow:0 1px 0 var(--line)}
-@media (max-width:1000px){.hdr nav,.hdr .right a{display:none}}
-@media (min-width:1001px){.menu-btn{display:none}}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:41;background:var(--bg)}
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px)}
+.hdr .wrap{height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-family:var(--f-disp);font-weight:800;font-size:18px;letter-spacing:-.01em}
+.logo span{color:var(--blue)}
+.hdr nav{display:flex;gap:28px;align-items:center}
+.hdr nav a{font-size:15px;font-weight:500;position:relative}
+.hdr nav a.nl::after{content:"";position:absolute;left:0;right:100%;bottom:-3px;height:2px;background:var(--blue);transition:right .3s}
+.hdr nav a.nl:hover::after{right:0}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:999px;font-weight:600;font-size:14px;border:0;cursor:pointer;font-family:var(--f-body)}
+.pill:hover{background:var(--blue);color:var(--on-blue)}
+.pill i{width:7px;height:7px;border-radius:50%;background:#3ddc84;display:block}
+.menu-btn{display:none}
+@media (max-width:820px){.hdr nav .nl{display:none}.menu-btn{display:inline-flex}.hdr nav .pill:not(.menu-btn){display:none}}
 
-/* Menú lateral */
-.drawer-bg{position:fixed;inset:0;background:rgba(0,0,0,.35);backdrop-filter:blur(4px);z-index:60}
-.drawer{position:fixed;top:0;right:0;bottom:0;width:min(330px,100%);background:var(--bg);color:var(--fg);z-index:61;
-  padding:calc(env(safe-area-inset-top,0px) + 16px) max(24px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 24px) 24px;display:flex;flex-direction:column;gap:4px}
-.drawer .x{align-self:flex-end;background:none;border:0;font-size:22px;color:var(--fg);cursor:pointer;width:40px;height:40px;border-radius:4px;margin-bottom:12px}
-.drawer .x:hover{background:var(--surface)}
-.drawer a{font-weight:500;font-size:16px;padding:12px 14px;border-radius:4px}
-.drawer a:hover{background:var(--surface)}
+/* Menú móvil a pantalla completa */
+.mnav{position:fixed;inset:0;z-index:60;background:var(--blue);color:var(--on-blue);display:flex;flex-direction:column;
+  padding:calc(env(safe-area-inset-top,0px) + 14px) var(--gr) calc(env(safe-area-inset-bottom,0px) + 28px) var(--gl)}
+.mnav .top{display:flex;justify-content:space-between;align-items:center;height:36px}
+.mnav .x{background:none;border:1px solid currentColor;color:inherit;border-radius:999px;padding:8px 16px;font:600 14px var(--f-body);cursor:pointer}
+.mnav ul{list-style:none;margin:auto 0 0;padding:0}
+.mnav li a{display:block;font-family:var(--f-disp);font-weight:800;font-size:clamp(40px,12vw,64px);line-height:1.05;letter-spacing:-.02em;padding-block:4px}
+.mnav .foot{margin-top:28px;opacity:.8}
 
-/* Pantallas */
-.panel{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;color:var(--on-img);display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;
-  padding:calc(env(safe-area-inset-top,0px) + 104px) var(--gr) calc(env(safe-area-inset-bottom,0px) + 56px) var(--gl)}
-.panel picture,.panel picture img{position:absolute;inset:0;width:100%;height:100%;max-width:none}
-.panel picture img{object-fit:cover}
-.panel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 38%,rgba(0,0,0,0) 62%,rgba(0,0,0,.45) 100%);pointer-events:none}
-.panel > :not(picture){position:relative;z-index:1}
-.panel h1,.panel h2{margin:0;font-weight:600;font-size:clamp(34px,5vw,44px);line-height:1.15;letter-spacing:-.005em;text-wrap:balance}
-.panel .sub{margin-top:6px;font-size:clamp(14px,1.4vw,16px);font-weight:500;text-wrap:balance;max-width:44ch;margin-inline:auto}
-.panel .sub a{text-decoration:underline;text-underline-offset:3px}
-.actions{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;width:100%}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-width:264px;height:40px;padding:0 24px;border-radius:4px;font:500 14px var(--f);border:0;cursor:pointer;transition:background .3s,color .3s;letter-spacing:.01em}
-.btn.pri{background:var(--primary);color:#fff}
-.btn.pri:hover{background:var(--primary-hover)}
-.btn.sec{background:var(--glass);color:var(--fg);backdrop-filter:blur(8px)}
-.btn.sec:hover{background:var(--glass-hover)}
-.chev{position:absolute;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);left:50%;transform:translateX(-50%);z-index:1;opacity:.85;animation:bob 2s ease-in-out infinite}
-@keyframes bob{50%{transform:translate(-50%,5px)}}
-@media (max-width:640px){
-  .actions{flex-direction:column;align-items:center;gap:12px}
-  .btn{width:100%;max-width:400px;min-width:0}
-  .panel{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 48px)}
+/* Hero */
+.hero{position:relative;padding-top:clamp(28px,5vw,64px);padding-bottom:clamp(40px,6vw,80px)}
+.hero .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:clamp(18px,3vw,28px)}
+.name{font-family:var(--f-disp);font-weight:800;line-height:.82;letter-spacing:-.045em;margin:0;font-size:clamp(44px,11vw,170px);text-transform:uppercase;position:relative;z-index:1}
+.name .l2{display:block;padding-left:clamp(0px,10vw,160px)}
+.name em{font-style:normal;color:var(--blue)}
+.collage{position:absolute;inset:0;pointer-events:none;z-index:2}
+.chip{position:absolute;pointer-events:auto;width:clamp(110px,12vw,190px);aspect-ratio:4/5;border-radius:6px;overflow:hidden;box-shadow:0 18px 40px -18px rgba(0,0,0,.45);transform:translate(var(--px,0px),var(--py,0px)) rotate(var(--r));transition:transform .25s ease-out;border:0;padding:0;background:var(--card);cursor:zoom-in}
+.chip img{width:100%;height:100%;object-fit:cover;display:block}
+.chip:hover{transform:rotate(0deg) scale(1.06);z-index:3}
+.hero .intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 48px;margin-top:clamp(28px,4vw,56px);align-items:end;position:relative;z-index:3}
+.hero .intro p{margin:0;font-size:clamp(18px,1.7vw,22px);line-height:1.4;max-width:34ch;font-weight:500;text-wrap:pretty}
+.hero .intro p b{font-weight:600;background:linear-gradient(transparent 62%,color-mix(in srgb,var(--blue) 28%,transparent) 0)}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+.btn-ghost{display:inline-flex;align-items:center;padding:9px 16px;border-radius:999px;border:1px solid var(--ink);font-weight:600;font-size:14px}
+.btn-ghost:hover{background:var(--ink);color:var(--bg)}
+@media (max-width:820px){
+  .collage{position:relative;inset:auto;display:flex;gap:10px;margin-top:22px;pointer-events:auto}
+  .chip{position:relative;left:auto!important;top:auto!important;width:calc((100% - 30px)/4);flex:none}
+  .hero .intro{grid-template-columns:1fr}
+  .hero .cta{justify-content:flex-start}
+  .name .l2{padding-left:0}
+  .name{font-size:12.4vw}
 }
 
-/* Dato / marcas */
-.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;max-width:1100px;margin:0 auto;padding-block:56px;padding-left:var(--gl);padding-right:var(--gr);text-align:center}
-.facts b{display:block;font-size:30px;font-weight:600;letter-spacing:-.01em}
-.facts span{color:var(--fg-2);font-size:13px}
-@media (max-width:640px){.facts{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:32px}}
-.brands{border-block:1px solid var(--line);padding-block:22px;padding-left:var(--gl);padding-right:var(--gr)}
-.brands ul{list-style:none;margin:0 auto;padding:0;max-width:1100px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 34px;font-weight:600;letter-spacing:.22em;font-size:12px;text-transform:uppercase;color:var(--fg-2)}
+/* Marquesina */
+.marquee{border-block:1px solid var(--line);overflow:hidden;padding-block:16px;white-space:nowrap}
+.marquee .track{display:inline-flex;gap:40px;animation:mq 34s linear infinite;padding-right:40px}
+.marquee span{font-family:var(--f-disp);font-weight:700;font-size:clamp(22px,2.6vw,34px);letter-spacing:-.01em;display:inline-flex;align-items:center;gap:40px}
+.marquee span::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--blue)}
+@keyframes mq{to{transform:translateX(-50%)}}
 
-/* Proyectos */
-.work{padding-block:88px 72px;padding-left:var(--gl);padding-right:var(--gr)}
-.work-in{max-width:1380px;margin:0 auto}
-.work h2{text-align:center;font-weight:600;font-size:clamp(28px,3.5vw,40px);margin:0 0 6px}
-.work .lead{text-align:center;color:var(--fg-2);margin:0 0 28px;font-weight:500}
-.seg-wrap{display:flex;justify-content:center;margin-bottom:40px;overflow-x:auto;scrollbar-width:none}
-.seg{display:inline-flex;background:var(--surface);border-radius:6px;padding:4px;gap:2px}
-.seg button{font:500 14px var(--f);color:var(--fg);background:transparent;border:0;border-radius:4px;padding:8px 16px;cursor:pointer;white-space:nowrap;transition:background .25s,box-shadow .25s}
-.seg button[aria-pressed="true"]{background:var(--bg);box-shadow:0 1px 4px rgba(0,0,0,.12)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:40px 24px}
-@media (max-width:640px){.grid{grid-template-columns:1fr;gap:32px}.seg-wrap{justify-content:flex-start}}
-.item{background:none;border:0;padding:0;text-align:center;font:inherit;color:inherit;cursor:pointer;display:flex;flex-direction:column;gap:14px}
-.item[hidden]{display:none!important}
-.item .ph{position:relative;aspect-ratio:4/3;max-width:100%;overflow:hidden;border-radius:4px;background:var(--surface)}
-.item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-.item:hover img{transform:scale(1.04)}
-.item .n{position:absolute;bottom:10px;right:10px;background:rgba(23,26,32,.75);color:#fff;font-size:11px;font-weight:600;padding:3px 8px;border-radius:3px}
-.item h3{margin:0;font-weight:600;font-size:17px}
-.item p{margin:2px 0 0;color:var(--fg-2);font-size:13px;font-weight:500}
-.item .more{font-size:13px;font-weight:500;text-decoration:underline;text-underline-offset:4px;color:var(--fg)}
+/* Encabezados de sección */
+section{padding-block:clamp(64px,9vw,128px)}
+.sh{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:end;gap:16px 24px;margin-bottom:clamp(28px,4vw,48px)}
+.sh h2{font-family:var(--f-disp);font-weight:800;font-size:clamp(38px,6.4vw,92px);line-height:.9;letter-spacing:-.035em;margin:0;text-wrap:balance}
+.sh .tag{grid-column:1 / -1}
+.sh p{margin:0;color:var(--ink-2);max-width:42ch;justify-self:end;text-align:right}
+@media (max-width:820px){.sh{grid-template-columns:minmax(0,1fr)}.sh h2{font-size:9vw}.sh p{justify-self:start;text-align:left}}
+
+/* Mosaico */
+.bento{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:clamp(70px,7.4vw,112px);grid-auto-flow:dense;gap:14px}
+.tile{position:relative;border:0;padding:0;margin:0;overflow:hidden;border-radius:10px;background:var(--card);cursor:zoom-in;color:#fff;text-align:left;font:inherit}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.tile .cap{position:absolute;left:0;right:0;bottom:0;padding:44px 16px 14px;background:linear-gradient(transparent,rgba(0,0,0,.72));display:flex;justify-content:space-between;align-items:end;gap:10px;transform:translateY(8px);opacity:0;transition:opacity .35s,transform .35s}
+.tile .cap b{font-family:var(--f-disp);font-weight:700;font-size:clamp(16px,1.4vw,21px);line-height:1.1;letter-spacing:-.01em}
+.tile .cap .mono{opacity:.8;white-space:nowrap}
+.tile .num{position:absolute;top:12px;left:12px;font-family:var(--f-mono);font-size:11px;background:var(--bg);color:var(--ink);padding:3px 8px;border-radius:999px}
+.tile:hover img,.tile:focus-visible img{transform:scale(1.05)}
+.tile:hover .cap,.tile:focus-visible .cap{opacity:1;transform:none}
+@media (hover:none){.tile .cap{opacity:1;transform:none;padding-top:36px}}
+.s-a{grid-column:span 3;grid-row:span 5}
+.s-b{grid-column:span 3;grid-row:span 3}
+.s-c{grid-column:span 3;grid-row:span 2}
+.s-d{grid-column:span 2;grid-row:span 4}
+.s-e{grid-column:span 3;grid-row:span 4}
+.s-f{grid-column:span 2;grid-row:span 3}
+@media (max-width:820px){
+  .bento{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:84px;gap:10px}
+  .s-a{grid-column:span 2;grid-row:span 4}
+  .s-b,.s-e{grid-column:span 2;grid-row:span 3}
+  .s-c{grid-column:span 2;grid-row:span 2}
+  .s-d{grid-column:span 1;grid-row:span 3}
+  .s-f,.s-e.s-mf{grid-column:span 1;grid-row:span 2}
+  .tile .cap{padding:30px 10px 10px}
+  .tile .cap .mono{display:none}
+}
+
+/* Proceso */
+.process{background:var(--card);border-block:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,28px);counter-reset:s}
+.step{display:flex;flex-direction:column;gap:14px}
+.step:nth-child(2){margin-top:clamp(0px,6vw,90px)}
+.step:nth-child(3){margin-top:clamp(0px,12vw,180px)}
+.step button{border:0;padding:0;border-radius:10px;overflow:hidden;aspect-ratio:4/5;max-width:100%;background:var(--bg);cursor:zoom-in}
+.step img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.step button:hover img{transform:scale(1.04)}
+.step h3{margin:0;font-family:var(--f-disp);font-weight:700;font-size:24px;letter-spacing:-.01em;display:flex;gap:12px;align-items:baseline}
+.step h3::before{counter-increment:s;content:"0" counter(s);font-family:var(--f-mono);font-size:13px;font-weight:500;color:var(--blue)}
+.step p{margin:0;color:var(--ink-2);max-width:36ch}
+@media (max-width:820px){.steps{grid-template-columns:1fr;gap:40px}.step:nth-child(n){margin-top:0}.step button{aspect-ratio:4/3}}
 
 /* XBREIN */
-.xb{background:var(--surface);padding-block:88px;padding-left:var(--gl);padding-right:var(--gr)}
-.xb-in{max-width:1380px;margin:0 auto}
-.xb h2{text-align:center;font-weight:600;font-size:clamp(28px,3.5vw,40px);margin:0 0 8px}
-.xb .lead{text-align:center;color:var(--fg-2);max-width:62ch;margin:0 auto 36px;font-weight:500}
-.rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(240px,22%);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;scrollbar-width:thin}
-.rail .item{scroll-snap-align:start}
-.rail .item .ph{aspect-ratio:4/5;background:#fff}
-.rail .item img{object-fit:contain}
-@media (max-width:640px){.rail{grid-auto-columns:78%}}
-.xb-foot{text-align:center;margin-top:28px}
+.xb{background:var(--blue);color:var(--on-blue)}
+.xb .sh p{color:color-mix(in srgb,var(--on-blue) 80%,transparent)}
+.xb .tag{opacity:.8}
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(220px,21vw,300px);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:18px;scrollbar-color:rgba(255,255,255,.5) transparent}
+.rail button{scroll-snap-align:start;border:0;padding:0;background:none;color:inherit;text-align:left;cursor:zoom-in;font:inherit;display:flex;flex-direction:column;gap:10px}
+.rail .ph{aspect-ratio:4/5;max-width:100%;border-radius:8px;overflow:hidden;background:#fff}
+.rail img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .5s}
+.rail button:hover img{transform:scale(1.03)}
+.rail b{font-weight:600;font-size:15px}
+.rail .mono{opacity:.75}
+.xb .more{display:inline-flex;margin-top:18px;border:1px solid currentColor;border-radius:999px;padding:9px 16px;font-weight:600;font-size:14px}
+.xb .more:hover{background:var(--on-blue);color:var(--blue)}
+@media (max-width:820px){.rail{grid-auto-columns:72%}}
+
+/* Índice */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.filters button{font:600 14px var(--f-body);color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer}
+.filters button:hover{border-color:var(--ink)}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.index{border-top:1px solid var(--ink)}
+.row{display:grid;grid-template-columns:60px minmax(0,2.2fr) minmax(0,1.2fr) minmax(0,1fr) 40px;align-items:center;gap:16px;padding-block:18px;border:0;border-bottom:1px solid var(--line);width:100%;background:none;color:inherit;text-align:left;font:inherit;cursor:pointer;transition:padding .3s,color .3s}
+.row .t{font-family:var(--f-disp);font-weight:700;font-size:clamp(20px,2.4vw,34px);letter-spacing:-.02em;line-height:1.05}
+.row .arr{justify-self:end;font-size:22px;transition:transform .3s}
+.row .th{display:none}
+.row:hover{padding-left:14px;color:var(--blue)}
+.row:hover .arr{transform:rotate(-45deg)}
+@media (max-width:820px){
+  .row{grid-template-columns:64px minmax(0,1fr) 24px;gap:4px 14px;padding-block:14px}
+  .row .th{display:block;width:64px;height:64px;border-radius:6px;object-fit:cover;grid-row:1 / span 2}
+  .row .n,.row .k{display:none}
+  .row .t{grid-column:2;grid-row:1;font-size:20px;align-self:end}
+  .row .c{grid-column:2;grid-row:2;align-self:start;font-size:14px}
+  .row .arr{grid-column:3;grid-row:1 / span 2}
+  .row:hover{padding-left:0}
+}
+.peek{position:fixed;left:0;top:0;width:260px;aspect-ratio:4/5;border-radius:8px;overflow:hidden;pointer-events:none;z-index:30;opacity:0;transform:translate(-50%,-50%) scale(.85) rotate(-4deg);transition:opacity .2s,transform .25s;box-shadow:0 24px 50px -20px rgba(0,0,0,.5)}
+.peek.on{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(-4deg)}
+.peek img{width:100%;height:100%;object-fit:cover;display:block}
+@media (hover:none),(max-width:820px){.peek{display:none}}
 
 /* Contacto */
-.contact{padding-block:96px;padding-left:var(--gl);padding-right:var(--gr);text-align:center}
-.contact h2{font-weight:600;font-size:clamp(28px,3.5vw,40px);margin:0 0 8px}
-.contact p{color:var(--fg-2);margin:0 0 32px;font-weight:500}
-.contact .actions .btn.sec{background:var(--surface)}
-.contact .actions .btn.sec:hover{background:var(--line)}
-footer{padding-block:24px calc(env(safe-area-inset-bottom,0px) + 24px);padding-left:var(--gl);padding-right:var(--gr);text-align:center;font-size:12px;color:var(--fg-2);display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+.contact{padding-bottom:clamp(40px,6vw,72px)}
+.big-link{display:block;margin-top:14px;font-family:var(--f-disp);font-weight:800;font-size:clamp(36px,9.5vw,150px);line-height:.85;letter-spacing:-.045em;text-transform:uppercase}
+.big-link span{display:inline-block;transition:transform .4s cubic-bezier(.2,.7,.2,1),color .3s}
+.big-link:hover span{color:var(--blue);transform:translateX(2%)}
+.contact .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:clamp(32px,5vw,56px);border-top:1px solid var(--line);padding-top:24px}
+.contact .grid a,.contact .grid strong{font-weight:600;font-size:18px}
+.contact .grid a:hover{color:var(--blue)}
+@media (max-width:820px){.contact .grid{grid-template-columns:1fr}}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-block:22px calc(env(safe-area-inset-bottom,0px) + 22px);border-top:1px solid var(--line)}
 
 /* Visor */
-.lb{position:fixed;inset:0;z-index:70;background:var(--scrim);color:#fff;display:grid;grid-template-rows:auto minmax(0,1fr) auto;
+.lb{position:fixed;inset:0;z-index:70;background:var(--scrim);color:#f2f2ee;display:grid;grid-template-rows:auto minmax(0,1fr) auto;
   padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)}
-.lb-top,.lb-bot{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 20px}
-.lb-top h3{margin:0;font-size:16px;font-weight:600}
-.lb-top span{color:#a9abb0;font-size:13px;font-weight:500}
-.lb-stage{position:relative;display:flex;align-items:center;justify-content:center;min-height:0;padding:0 64px}
-.lb-stage img{max-width:100%;max-height:100%;object-fit:contain;border-radius:2px}
-.lb .ic{background:rgba(255,255,255,.12);border:0;color:#fff;width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:18px;display:grid;place-items:center;transition:background .2s}
-.lb .ic:hover{background:rgba(255,255,255,.28)}
+.lb-top,.lb-bot{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 20px}
+.lb-top h3{margin:0;font-family:var(--f-disp);font-weight:700;font-size:20px}
+.lb-top .mono{color:#a3a39e}
+.lb-stage{position:relative;display:flex;align-items:center;justify-content:center;min-height:0;padding:0 72px}
+.lb-stage img{max-width:100%;max-height:100%;object-fit:contain;border-radius:4px}
+.lb .ic{background:rgba(255,255,255,.1);border:0;color:#fff;width:46px;height:46px;border-radius:50%;cursor:pointer;font-size:18px;display:grid;place-items:center}
+.lb .ic:hover{background:var(--blue)}
 .lb .prev,.lb .next{position:absolute;top:50%;transform:translateY(-50%)}
-.lb .prev{left:12px}.lb .next{right:12px}
-.lb-bot p{margin:0;max-width:70ch;color:#d4d5d8;font-size:14px}
-.dots{display:flex;gap:6px;flex:none}
-.dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3)}
-.dots i.on{background:#fff}
-@media (max-width:640px){
+.lb .prev{left:14px}.lb .next{right:14px}
+.lb-bot p{margin:0;max-width:64ch;color:#d0d0cb;font-size:15px}
+.dots{display:flex;gap:6px;flex:none}.dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3)}.dots i.on{background:#fff}
+@media (max-width:820px){
   .lb-stage{padding:0}
-  .lb .prev,.lb .next{top:auto;bottom:-58px;transform:none}
-  .lb .prev{left:20px}.lb .next{right:20px}
-  .lb-bot{flex-direction:column-reverse;align-items:center;text-align:center;padding-top:20px;padding-bottom:20px}
+  .lb .prev,.lb .next{top:auto;bottom:-62px;transform:none}.lb .prev{left:20px}.lb .next{right:20px}
+  .lb-bot{flex-direction:column-reverse;text-align:center;padding-block:22px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 
-<header class="hdr" id="hdr">
-  <div class="hdr-in">
-    <a class="logo" href="#inicio">Jerko Bakulic</a>
+<header class="hdr">
+  <div class="wrap">
+    <a class="logo" href="#inicio">Bakulic<span>.</span></a>
     <nav aria-label="Principal">
-      <a href="#pop">Material POP</a>
-      <a href="#branding">Branding</a>
-      <a href="#publicidad">Publicidad</a>
-      <a href="#xbrein">XBREIN</a>
-      <a href="#proyectos">Proyectos</a>
+      <a class="nl" href="#trabajos">Trabajos</a>
+      <a class="nl" href="#proceso">Proceso</a>
+      <a class="nl" href="#xbrein">XBREIN</a>
+      <a class="nl" href="#indice">Índice</a>
+      <a class="pill" href="#contacto"><i></i>Disponible para proyectos</a>
+      <button class="pill menu-btn" type="button" id="menu-open" aria-expanded="false" aria-controls="mnav">Menú</button>
     </nav>
-    <div class="right">
-      <a href="#contacto">Contacto</a>
-      <button class="menu-btn" id="menu-open" type="button" aria-controls="drawer" aria-expanded="false">Menú</button>
-    </div>
   </div>
 </header>
 
-<div class="drawer-bg" id="drawer-bg" hidden></div>
-<aside class="drawer" id="drawer" hidden aria-label="Menú">
-  <button class="x" id="menu-close" type="button" aria-label="Cerrar menú">✕</button>
-  <a href="#pop">Material POP</a>
-  <a href="#branding">Branding</a>
-  <a href="#publicidad">Publicidad</a>
-  <a href="#foto">Foto y retoque</a>
-  <a href="#eventos">Eventos y stands</a>
-  <a href="#xbrein">XBREIN</a>
-  <a href="#proyectos">Todos los proyectos</a>
-  <a href="#contacto">Contacto</a>
-</aside>
+<div class="mnav" id="mnav" hidden role="dialog" aria-modal="true" aria-label="Menú">
+  <div class="top"><span class="logo">Bakulic.</span><button class="x" type="button" id="menu-close">Cerrar</button></div>
+  <ul>
+    <li><a href="#trabajos">Trabajos</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#xbrein">XBREIN</a></li>
+    <li><a href="#indice">Índice</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <div class="foot mono">Diseño gráfico · Chile</div>
+</div>
 
 <main>
-  <section class="panel" id="inicio">
-    <picture>
-      <source media="(max-width:640px)" srcset="w/CnO5SO-uxof-0.webp">
-      <img src="w/CnUXn6yuQcG-0.webp" alt="Auto de drift con humo, retoque fotográfico">
-    </picture>
-    <div>
-      <h1>Jerko Bakulic</h1>
-      <p class="sub">Diseñador gráfico · Material POP, branding y publicidad</p>
+  <div class="hero wrap" id="inicio">
+    <div class="row"><span class="mono dim">Portafolio 2022 — 2026</span><span class="mono dim">Diseñador gráfico · Community manager</span></div>
+    <h1 class="name">Jerko<span class="l2">Bakulic<em>.</em></span></h1>
+    <div class="collage" id="collage"></div>
+    <div class="intro">
+      <p>Diseño piezas que se imprimen, se arman y se venden: <b>exhibidores, packaging, marcas y campañas</b> para automotriz, tecnología y B2B. Fui coach visual de Hyundai, Casio y Duracell.</p>
+      <div class="cta">
+        <a class="pill" href="#trabajos">Ver trabajos ↓</a>
+        <a class="btn-ghost" href="https://www.instagram.com/bakulicdiseno/" target="_blank" rel="noopener">Instagram ↗</a>
+      </div>
     </div>
-    <div class="actions">
-      <a class="btn pri" href="#proyectos">Ver proyectos</a>
-      <a class="btn sec" href="#contacto">Contactar</a>
-    </div>
-    <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-  </section>
-
-  <div class="facts" aria-label="Resumen">
-    <div><b>22</b><span>proyectos en este portafolio</span></div>
-    <div><b>9+</b><span>marcas atendidas</span></div>
-    <div><b>5</b><span>disciplinas, del archivo al punto de venta</span></div>
-    <div><b>3</b><span>marcas como coach visual: Hyundai, Casio y Duracell</span></div>
   </div>
-  <div class="brands"><ul><li>Hyundai</li><li>Casio</li><li>Duracell</li><li>Meguiar's</li><li>MaxShine</li><li>Derco</li><li>3M</li><li>B2B Media Group</li><li>XBREIN</li></ul></div>
 
-  <section class="panel" id="pop">
-    <picture>
-      <source media="(max-width:640px)" srcset="w/Cg1XtjIOdhf-2.webp">
-      <img src="w/Cg1YCo1OfCI-0.webp" alt="Showroom con exhibidores de Meguiar's" loading="lazy">
-    </picture>
-    <div>
-      <h2>Material POP</h2>
-      <p class="sub">Exhibidores, columnas, packaging y kits para Meguiar's, MaxShine, Derco y Wynn's</p>
-    </div>
-    <div class="actions">
-      <button class="btn pri" type="button" data-go="pop">Ver material POP</button>
-      <button class="btn sec" type="button" data-open="0">Kit Meguiar's</button>
+  <div class="marquee" aria-label="Marcas con las que he trabajado">
+    <div class="track" id="track"></div>
+  </div>
+
+  <section id="trabajos">
+    <div class="wrap">
+      <div class="sh">
+        <span class="tag mono dim">(01) Trabajos seleccionados</span>
+        <h2>Diseño que<br>se toca.</h2>
+        <span></span>
+        <p>POP, branding, publicidad, foto y eventos. Toca cualquier pieza para ver el proyecto completo.</p>
+      </div>
+      <div class="bento" id="bento"></div>
     </div>
   </section>
 
-  <section class="panel" id="branding">
-    <picture>
-      <source media="(max-width:640px)" srcset="w/CpAjVepuS7c-0.webp">
-      <img src="w/CnO6OxhuD02-0.webp" alt="Polera corporativa de Herco Equipments con ilustración de camión minero" loading="lazy">
-    </picture>
-    <div>
-      <h2>Branding</h2>
-      <p class="sub">Logotipos e identidad aplicada para empresas en Chile y Estados Unidos</p>
-    </div>
-    <div class="actions">
-      <button class="btn pri" type="button" data-go="brand">Ver branding</button>
-      <button class="btn sec" type="button" data-open="7">Herco Equipments</button>
-    </div>
-  </section>
-
-  <section class="panel" id="publicidad">
-    <picture>
-      <source media="(max-width:640px)" srcset="w/CnO5EjvubJ8-0.webp">
-      <img src="w/CnO5QPsukKX-0.webp" alt="Publicidad de pintura automotriz 3M" loading="lazy">
-    </picture>
-    <div>
-      <h2>Publicidad y redes</h2>
-      <p class="sub">Campañas y contenido para Hyundai, Casio, MaxShine, 3M y B2B Media Group</p>
-    </div>
-    <div class="actions">
-      <button class="btn pri" type="button" data-go="ads">Ver publicidad</button>
-      <button class="btn sec" type="button" data-open="12">Hyundai Technology</button>
-    </div>
-  </section>
-
-  <section class="panel" id="foto">
-    <picture>
-      <source media="(max-width:640px)" srcset="w/CnUXn6yuQcG-1.webp">
-      <img src="w/CnO5sufOzPI-0.webp" alt="Fotografía de producto: pad de pulido verde" loading="lazy">
-    </picture>
-    <div>
-      <h2>Foto y retoque</h2>
-      <p class="sub">Fotografía de producto, retoque y composición para campañas</p>
-    </div>
-    <div class="actions">
-      <button class="btn pri" type="button" data-go="foto">Ver fotografía</button>
-    </div>
-  </section>
-
-  <section class="panel" id="eventos">
-    <picture>
-      <source media="(max-width:640px)" srcset="w/Cyy0sqaOkYY-0.webp">
-      <img src="w/Cyy0sqaOkYY-4.webp" alt="Auditorio del encuentro ElecGas 2023" loading="lazy">
-    </picture>
-    <div>
-      <h2>Eventos y stands</h2>
-      <p class="sub">Stands, muros de prensa y gráfica de escenario</p>
-    </div>
-    <div class="actions">
-      <button class="btn pri" type="button" data-go="event">Ver eventos</button>
-      <button class="btn sec" type="button" data-open="20">ElecGas 2023</button>
+  <section class="process" id="proceso">
+    <div class="wrap">
+      <div class="sh">
+        <span class="tag mono dim">(02) Un proyecto, de punta a punta</span>
+        <h2>Kit Meguiar's<br>“Bienvenido”.</h2>
+        <span></span>
+        <p>Así llega una idea al punto de venta: render, producción y pieza armada.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><button type="button" data-open="0" data-img="0"><img src="w/ChQa5NGOecd-0.webp" alt="Render de exhibidores Meguiar's" loading="lazy"></button><h3>Render</h3><p>Diseño de los exhibidores de mesón y de piso con la gráfica de la campaña.</p></div>
+        <div class="step"><button type="button" data-open="0" data-img="2"><img src="w/CnO5OPfuC_8-0.webp" alt="Caja del kit Bienvenido a la familia" loading="lazy"></button><h3>Producción</h3><p>Caja del kit con el listado de productos y la identidad de la promoción.</p></div>
+        <div class="step"><button type="button" data-open="0" data-img="3"><img src="w/Cg1X9F3u8oA-0.webp" alt="Caja del kit armada sobre una mesa" loading="lazy"></button><h3>Pieza final</h3><p>La caja impresa y armada, lista para entregar al cliente.</p></div>
+      </div>
     </div>
   </section>
 
   <section class="xb" id="xbrein">
-    <div class="xb-in">
-      <h2>XBREIN · Publicidad B2B</h2>
-      <p class="lead">Línea gráfica para la empresa de geointeligencia con operación en 20 países: piezas de CBREIN (consumo masivo), TBREIN (marketing) y anuncios para Expo Franquicias Guadalajara y Endeavor México.</p>
+    <div class="wrap">
+      <div class="sh">
+        <span class="tag mono">(03) Cliente actual</span>
+        <h2>XBREIN.</h2>
+        <span></span>
+        <p>Publicidad B2B para una empresa de geointeligencia en 20 países: piezas de CBREIN y TBREIN y anuncios para Expo Franquicias y Endeavor México.</p>
+      </div>
       <div class="rail" id="rail"></div>
-      <div class="xb-foot"><a class="btn sec" style="background:var(--bg)" href="https://www.linkedin.com/company/xbrein/" target="_blank" rel="noopener">Ver XBREIN en LinkedIn</a></div>
+      <a class="more" href="https://www.linkedin.com/company/xbrein/" target="_blank" rel="noopener">Ver XBREIN en LinkedIn ↗</a>
     </div>
   </section>
 
-  <section class="work" id="proyectos">
-    <div class="work-in">
-      <h2>Proyectos</h2>
-      <p class="lead" id="count"></p>
-      <div class="seg-wrap"><div class="seg" role="group" aria-label="Filtrar proyectos" id="seg"></div></div>
-      <div class="grid" id="grid"></div>
+  <section id="indice">
+    <div class="wrap">
+      <div class="sh">
+        <span class="tag mono dim">(04) Índice</span>
+        <h2>Todos los<br>trabajos.</h2>
+        <span></span>
+        <p id="count"></p>
+      </div>
+      <div class="filters" role="group" aria-label="Filtrar trabajos" id="filters"></div>
+      <div class="index" id="index"></div>
     </div>
   </section>
 
   <section class="contact" id="contacto">
-    <h2>Hablemos de tu marca</h2>
-    <p>Escríbeme por Instagram y te respondo a la brevedad.</p>
-    <div class="actions">
-      <a class="btn pri" href="https://www.instagram.com/bakulicdiseno/" target="_blank" rel="noopener">Instagram @bakulicdiseno</a>
-      <a class="btn sec" href="https://www.linkedin.com/company/xbrein/" target="_blank" rel="noopener">LinkedIn XBREIN</a>
+    <div class="wrap">
+      <span class="mono dim">(05) Contacto</span>
+      <a class="big-link" href="https://www.instagram.com/bakulicdiseno/" target="_blank" rel="noopener"><span>Hablemos</span><br><span>→</span></a>
+      <div class="grid">
+        <div><div class="mono dim">Instagram</div><a href="https://www.instagram.com/bakulicdiseno/" target="_blank" rel="noopener">@bakulicdiseno</a></div>
+        <div><div class="mono dim">LinkedIn</div><a href="https://www.linkedin.com/company/xbrein/" target="_blank" rel="noopener">XBREIN</a></div>
+        <div><div class="mono dim">Base</div><strong>Chile</strong></div>
+      </div>
     </div>
   </section>
 </main>
 
-<footer><span>Jerko Bakulic © 2026</span><span>Diseño gráfico · Chile</span></footer>
+<footer><div class="wrap"><span class="mono dim">© 2026 Jerko Bakulic</span><span class="mono dim">Diseño gráfico · POP · Branding</span></div></footer>
+
+<div class="peek" id="peek" aria-hidden="true"><img id="peek-img" alt=""></div>
 
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lb-title">
-  <div class="lb-top"><div><h3 id="lb-title"></h3><span id="lb-cat"></span></div><button class="ic" type="button" id="lb-close" aria-label="Cerrar">✕</button></div>
+  <div class="lb-top"><div><h3 id="lb-title"></h3><span class="mono" id="lb-cat"></span></div><button class="ic" type="button" id="lb-close" aria-label="Cerrar">✕</button></div>
   <div class="lb-stage">
     <button class="ic prev" type="button" id="lb-prev" aria-label="Anterior">←</button>
     <img id="lb-img" alt="">
@@ -334,113 +352,121 @@ footer{padding-block:24px calc(env(safe-area-inset-bottom,0px) + 24px);padding-l
 
 <script>
 const CATS={pop:"Material POP",brand:"Branding",ads:"Publicidad",foto:"Foto y retoque",event:"Eventos"};
+/* s = tamaño en el mosaico (a–f, ver CSS; mf = chico en móvil); el orden arma bloques que calzan sin huecos. Sin s aparece solo en el índice */
 const P=[
- {t:"Kit Bienvenido a la familia",c:"Meguiar's",k:"pop",d:"Exhibidores de mesón y de piso para el lanzamiento del kit, con la caja de bienvenida diseñada para la misma campaña.",i:["ChQa5NGOecd-0","CnO5KfzOT7z-0","CnO5OPfuC_8-0","Cg1X9F3u8oA-0","Cg1X9F3u8oA-1","Cg1X9F3u8oA-2","Cg1X9F3u8oA-3"]},
- {t:"Exhibidores de piso",c:"MaxShine",k:"pop",d:"Torres de exhibición con gráfica completa en rojo y negro de la marca, más el delantal de taller a juego.",i:["CnO5opuOJdo-0","CnO5m0NOLXj-0","CnO5qkEuVaO-0"]},
- {t:"Columnas de showroom",c:"Meguiar's · Wynn's",k:"pop",d:"Revestimiento de columnas con vinilo impreso, de diseño a instalación, para el showroom de la distribuidora.",i:["Cg1XtjIOdhf-2","Cg1XtjIOdhf-0","Cg1XtjIOdhf-1","Cg1XtjIOdhf-3","CgkVmqbu-mY-0","Cg1YCo1OfCI-0"]},
- {t:"Exhibidor Dercocenter",c:"Derco",k:"pop",d:"Exhibidor de mesón con cabezal de marca para puntos de venta Dercocenter.",i:["CiSnMWHODQj-1","CiSnMWHODQj-0"]},
- {t:"Rack de producto",c:"Meguiar's",k:"pop",d:"Estantería metálica con laterales gráficos para tiendas especializadas.",i:["CnO5k_MuSVe-0"]},
- {t:"Packaging Air Clean Pack",c:"Wynn's",k:"pop",d:"Caja para el tratamiento de aire acondicionado, con información de uso y beneficios en las caras laterales.",i:["CnO5MVgurbg-0"]},
- {t:"Florida Exporter Dealer",c:"Logotipo · Estados Unidos",k:"brand",d:"Logotipo para un exportador de Florida, Estados Unidos.",i:["Ca29vXFOBmR-0"]},
- {t:"Herco Equipments",c:"Minería y construcción",k:"brand",d:"Logotipo aplicado en oficinas de Texas, ilustración del camión CAEX para polera corporativa y piezas de comunicación.",i:["Ca29W4FOAH--0","CnO6MlluU9F-0","CnO6OxhuD02-0","CnnzL4lDPit-0","Ca29TJiO4Tn-0"]},
- {t:"HTP Component Clinic",c:"Logotipo",k:"brand",d:"Marca para un taller de reparación de componentes.",i:["CbOHEY1OhGA-0"]},
- {t:"Casa Terapia",c:"Logotipo",k:"brand",d:"Dos propuestas de logotipo para un centro de terapias.",i:["CpAjVepuS7c-0"]},
- {t:"LOA Importadora",c:"Logotipo",k:"brand",d:"Identidad para una importadora.",i:["CbOHY57OvUX-0"]},
- {t:"Sello Productos Warless",c:"Meguiar's",k:"brand",d:"Sello para comunicar la línea de productos que no necesitan agua.",i:["CnO5GhEOfzi-0"]},
- {t:"Hyundai Technology",c:"Campaña en redes",k:"ads",d:"Piezas para notebooks y tablets de Hyundai Technology.",i:["Ca29ee5OgEz-0","Ca29ax-Oard-0","Ca29ccUu7dv-0"]},
- {t:"La historia de Casio",c:"Casio",k:"ads",d:"Portada de contenido para redes de Casio.",i:["Ca29liNukhJ-0"]},
- {t:"Fechas especiales",c:"MaxShine",k:"ads",d:"Año Nuevo 2023 y concurso del Día del Niño para las redes de MaxShine.",i:["CnO5EjvubJ8-0","CnO5UdIu82N-0"]},
- {t:"20% en Mercado Libre",c:"Promoción",k:"ads",d:"Pieza promocional para la tienda oficial en Mercado Libre.",i:["Cg1XrCqO0sU-0"]},
- {t:"Hazlo bien a la primera",c:"3M",k:"ads",d:"Diagramación de publicidad para pintura automotriz 3M.",i:["CnO5QPsukKX-0"]},
- {t:"Conferencia Los Lagos",c:"B2B Media Group",k:"ads",d:"Campaña de inscripciones para la X Conferencia Los Lagos Aqua Forum, y el hito de 200 mil seguidores de revista Minería.",i:["Cyy0dG3uQ4H-0","Cyy0dG3uQ4H-1","Cyy0jVbuxh7-0"]},
- {t:"Retoque de drift",c:"Retoque fotográfico",k:"foto",d:"Retoque y composición de fotografía de competencia.",i:["CnUXn6yuQcG-0","CnUXn6yuQcG-1"]},
- {t:"Fotografía de producto",c:"MaxShine",k:"foto",d:"Fotografía y retoque de pads de pulido.",i:["CnO5sufOzPI-0"]},
- {t:"Stand ElecGas 2023",c:"B2B Media Group",k:"event",d:"Stand, muro de prensa y gráfica de pantalla para el encuentro ElecGas 2023.",i:["Cyy0sqaOkYY-0","Cyy0sqaOkYY-1","Cyy0sqaOkYY-2","Cyy0sqaOkYY-3","Cyy0sqaOkYY-4"]},
- {t:"Lamborghini en rojo",c:"Composición",k:"foto",d:"Composición para campaña con tratamiento de color monocromo.",i:["CnO5SO-uxof-0"]},
- {t:"Stand Car and Coffee",c:"Montaje",k:"event",d:"Montaje de stand para el evento Car and Coffee.",i:["CnO6RKNuwHI-0"]}
+ {t:"Kit Bienvenido a la familia",c:"Meguiar's",k:"pop",y:"2022",s:"a",d:"Exhibidores de mesón y de piso para el lanzamiento del kit, con la caja de bienvenida diseñada para la misma campaña.",i:["ChQa5NGOecd-0","CnO5KfzOT7z-0","CnO5OPfuC_8-0","Cg1X9F3u8oA-0","Cg1X9F3u8oA-1","Cg1X9F3u8oA-2","Cg1X9F3u8oA-3"]},
+ {t:"Columnas de showroom",c:"Meguiar's · Wynn's",k:"pop",y:"2022",s:"b",d:"Revestimiento de columnas con vinilo impreso, de diseño a instalación, para el showroom de la distribuidora.",i:["Cg1XtjIOdhf-2","Cg1XtjIOdhf-0","Cg1XtjIOdhf-1","Cg1XtjIOdhf-3","CgkVmqbu-mY-0","Cg1YCo1OfCI-0"]},
+ {t:"Retoque de drift",c:"Retoque fotográfico",k:"foto",y:"2023",s:"c",d:"Retoque y composición de fotografía de competencia.",i:["CnUXn6yuQcG-0","CnUXn6yuQcG-1"]},
+ {t:"Hyundai Technology",c:"Campaña en redes",k:"ads",y:"2022",s:"d",d:"Piezas para notebooks y tablets de Hyundai Technology.",i:["Ca29ee5OgEz-0","Ca29ax-Oard-0","Ca29ccUu7dv-0"]},
+ {t:"Exhibidores de piso",c:"MaxShine",k:"pop",y:"2023",s:"d",d:"Torres de exhibición con gráfica completa en rojo y negro de la marca, más el delantal de taller a juego.",i:["CnO5opuOJdo-0","CnO5m0NOLXj-0","CnO5qkEuVaO-0"]},
+ {t:"Herco Equipments",c:"Branding · Minería",k:"brand",y:"2022",s:"d",d:"Logotipo aplicado en oficinas de Texas, ilustración del camión CAEX para polera corporativa y piezas de comunicación.",i:["CnO6MlluU9F-0","Ca29W4FOAH--0","CnO6OxhuD02-0","CnnzL4lDPit-0","Ca29TJiO4Tn-0"]},
+ {t:"Stand ElecGas 2023",c:"B2B Media Group",k:"event",y:"2023",s:"e",d:"Stand, muro de prensa y gráfica de pantalla para el encuentro ElecGas 2023.",i:["Cyy0sqaOkYY-0","Cyy0sqaOkYY-1","Cyy0sqaOkYY-2","Cyy0sqaOkYY-3","Cyy0sqaOkYY-4"]},
+ {t:"Florida Exporter Dealer",c:"Logotipo · EE. UU.",k:"brand",y:"2022",s:"c",d:"Logotipo para un exportador de Florida, Estados Unidos.",i:["Ca29vXFOBmR-0"]},
+ {t:"Packaging Air Clean Pack",c:"Wynn's",k:"pop",y:"2023",s:"c",d:"Caja para el tratamiento de aire acondicionado, con información de uso y beneficios en las caras laterales.",i:["CnO5MVgurbg-0"]},
+ {t:"Lamborghini en rojo",c:"Composición",k:"foto",y:"2023",s:"d",d:"Composición para campaña con tratamiento de color monocromo.",i:["CnO5SO-uxof-0"]},
+ {t:"Fechas especiales",c:"MaxShine",k:"ads",y:"2023",s:"d",d:"Año Nuevo 2023 y concurso del Día del Niño para las redes de MaxShine.",i:["CnO5EjvubJ8-0","CnO5UdIu82N-0"]},
+ {t:"Casa Terapia",c:"Logotipo",k:"brand",y:"2023",s:"d",d:"Dos propuestas de logotipo para un centro de terapias.",i:["CpAjVepuS7c-0"]},
+ {t:"HTP Component Clinic",c:"Logotipo",k:"brand",y:"2022",s:"f",d:"Marca para un taller de reparación de componentes.",i:["CbOHEY1OhGA-0"]},
+ {t:"Hazlo bien a la primera",c:"3M",k:"ads",y:"2023",s:"f",d:"Diagramación de publicidad para pintura automotriz 3M.",i:["CnO5QPsukKX-0"]},
+ {t:"Exhibidor Dercocenter",c:"Derco",k:"pop",y:"2022",s:"f",d:"Exhibidor de mesón con cabezal de marca para puntos de venta Dercocenter.",i:["CiSnMWHODQj-1","CiSnMWHODQj-0"]},
+ {t:"Conferencia Los Lagos",c:"B2B Media Group",k:"ads",y:"2023",s:"e",d:"Campaña de inscripciones para la X Conferencia Los Lagos Aqua Forum, y el hito de 200 mil seguidores de revista Minería.",i:["Cyy0dG3uQ4H-1","Cyy0dG3uQ4H-0","Cyy0jVbuxh7-0"]},
+ {t:"Fotografía de producto",c:"MaxShine",k:"foto",y:"2023",s:"e mf",d:"Fotografía y retoque de pads de pulido.",i:["CnO5sufOzPI-0"]},
+ {t:"Rack de producto",c:"Meguiar's",k:"pop",y:"2023",d:"Estantería metálica con laterales gráficos para tiendas especializadas.",i:["CnO5k_MuSVe-0"]},
+ {t:"LOA Importadora",c:"Logotipo",k:"brand",y:"2022",d:"Identidad para una importadora.",i:["CbOHY57OvUX-0"]},
+ {t:"Sello Productos Warless",c:"Meguiar's",k:"brand",y:"2023",d:"Sello para comunicar la línea de productos que no necesitan agua.",i:["CnO5GhEOfzi-0"]},
+ {t:"La historia de Casio",c:"Casio",k:"ads",y:"2022",d:"Portada de contenido para redes de Casio.",i:["Ca29liNukhJ-0"]},
+ {t:"20% en Mercado Libre",c:"Promoción",k:"ads",y:"2022",d:"Pieza promocional para la tienda oficial en Mercado Libre.",i:["Cg1XrCqO0sU-0"]},
+ {t:"Stand Car and Coffee",c:"Montaje",k:"event",y:"2023",d:"Montaje de stand para el evento Car and Coffee.",i:["CnO6RKNuwHI-0"]}
 ];
 const XB=[
  {t:"Mide la canibalización",c:"XBREIN",d:"Key visual de location intelligence para franquicias.",i:["xb-2-0"]},
- {t:"Detectamos dónde está la demanda",c:"CBREIN · Consumo masivo",d:"Pieza de la línea CBREIN.",i:["xb-10-0"]},
- {t:"Comercios que aún no te compran",c:"CBREIN · Consumo masivo",d:"Pieza de la línea CBREIN.",i:["xb-16-0"]},
- {t:"Comercios que tu marca no atiende",c:"CBREIN · Consumo masivo",d:"Pieza de la línea CBREIN.",i:["xb-4-0"]},
- {t:"Territorio en prospección",c:"CBREIN · Consumo masivo",d:"Pieza de la línea CBREIN.",i:["xb-5-0"]},
- {t:"Fuerza de ventas al comercio correcto",c:"CBREIN · Consumo masivo",d:"Pieza de la línea CBREIN.",i:["xb-21-0"]},
- {t:"Clonación de mercado",c:"TBREIN · MarTech",d:"Pieza de la línea TBREIN.",i:["xb-22-0"]},
- {t:"Leads calificados",c:"TBREIN · MarTech",d:"Pieza de la línea TBREIN.",i:["xb-27-0"]},
+ {t:"Detectamos dónde está la demanda",c:"CBREIN",d:"Pieza de la línea CBREIN, consumo masivo.",i:["xb-10-0"]},
+ {t:"Comercios que aún no te compran",c:"CBREIN",d:"Pieza de la línea CBREIN, consumo masivo.",i:["xb-16-0"]},
+ {t:"Comercios que tu marca no atiende",c:"CBREIN",d:"Pieza de la línea CBREIN, consumo masivo.",i:["xb-4-0"]},
+ {t:"Territorio en prospección",c:"CBREIN",d:"Pieza de la línea CBREIN, consumo masivo.",i:["xb-5-0"]},
+ {t:"Fuerza de ventas al comercio correcto",c:"CBREIN",d:"Pieza de la línea CBREIN, consumo masivo.",i:["xb-21-0"]},
+ {t:"Clonación de mercado",c:"TBREIN",d:"Pieza de la línea TBREIN, MarTech.",i:["xb-22-0"]},
+ {t:"Leads calificados",c:"TBREIN",d:"Pieza de la línea TBREIN, MarTech.",i:["xb-27-0"]},
  {t:"Expo Franquicias Guadalajara",c:"Evento",d:"Anuncio de charla para Expo Franquicias Guadalajara.",i:["xb-0-0"]},
  {t:"XBREIN en Endeavor",c:"Evento",d:"Anuncio de charla para Endeavor México.",i:["xb-3-0"]}
 ];
+const BRANDS=["Hyundai","Casio","Duracell","Meguiar's","MaxShine","Derco","3M","Wynn's","B2B Media Group","XBREIN","Herco"];
 const src=id=>"w/"+id+".webp";
 const $=id=>document.getElementById(id);
+const pad=n=>String(n+1).padStart(2,"0");
 
-function item(p,idx,group,withMore){
-  const b=document.createElement("button");
-  b.type="button";b.className="item";b.dataset.k=p.k||"";
-  b.innerHTML=`<div class="ph"><img src="${src(p.i[0])}" loading="lazy" alt="${p.t}, ${p.c}">${p.i.length>1?`<span class="n">${p.i.length} fotos</span>`:""}</div>
-  <div><h3>${p.t}</h3><p>${p.c}</p></div>${withMore?`<span class="more">Ver proyecto</span>`:""}`;
-  b.addEventListener("click",()=>openLb(group,idx));
-  return b;
-}
-P.forEach((p,i)=>$("grid").appendChild(item(p,i,P,true)));
-XB.forEach((p,i)=>$("rail").appendChild(item(p,i,XB,false)));
-
-let current="all";
-function setFilter(k){
-  current=k;let n=0;
-  $("grid").querySelectorAll(".item").forEach(c=>{const on=k==="all"||c.dataset.k===k;c.hidden=!on;if(on)n++;});
-  $("seg").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.k===k)));
-  $("count").textContent=n+(n===1?" proyecto":" proyectos")+(k==="all"?"":" en "+CATS[k]);
-}
-[["all","Todos"],...Object.entries(CATS)].forEach(([k,l])=>{
-  const b=document.createElement("button");b.type="button";b.dataset.k=k;b.textContent=l;
-  b.addEventListener("click",()=>setFilter(k));$("seg").appendChild(b);
+/* Collage del hero: [proyecto, imagen, posición en escritorio, giro]. En móvil se ordenan en fila. */
+[[1,"Cg1XtjIOdhf-2",{left:"66%",top:"20%"},"6deg"],
+ [9,"CnO5SO-uxof-0",{left:"84%",top:"27%"},"-7deg"],
+ [10,"CnO5EjvubJ8-0",{left:"42%",top:"60%"},"-5deg"],
+ [5,"CnO6MlluU9F-0",{left:"57%",top:"66%"},"4deg"]].forEach(([idx,img,pos,r],n)=>{
+  const b=document.createElement("button");b.type="button";b.className="chip";b.style.setProperty("--r",r);Object.assign(b.style,pos);
+  b.dataset.depth=String(10+n*6);
+  b.innerHTML=`<img src="${src(img)}" alt="${P[idx].t}">`;b.addEventListener("click",()=>openLb(P,idx));$("collage").appendChild(b);
 });
+const fine=matchMedia("(hover:hover) and (pointer:fine)").matches&&!matchMedia("(prefers-reduced-motion:reduce)").matches;
+if(fine){const hero=$("inicio");hero.addEventListener("mousemove",e=>{const r=hero.getBoundingClientRect();const dx=(e.clientX-r.left)/r.width-.5,dy=(e.clientY-r.top)/r.height-.5;
+  hero.querySelectorAll(".chip").forEach(c=>{const d=+c.dataset.depth;c.style.setProperty("--px",(-dx*d)+"px");c.style.setProperty("--py",(-dy*d)+"px");});});}
+
+/* Marquesina: la lista va duplicada para que el bucle no se corte */
+$("track").innerHTML=BRANDS.concat(BRANDS).map(b=>`<span>${b}</span>`).join("");
+
+/* Mosaico */
+P.forEach((p,i)=>{if(!p.s)return;
+  const b=document.createElement("button");b.type="button";b.className="tile "+p.s.split(" ").map(x=>"s-"+x).join(" ");
+  b.innerHTML=`<img src="${src(p.i[0])}" loading="lazy" alt="${p.t}, ${p.c}"><span class="num">${pad(i)}</span><span class="cap"><b>${p.t}</b><span class="mono">${p.c}</span></span>`;
+  b.addEventListener("click",()=>openLb(P,i));$("bento").appendChild(b);});
+
+/* XBREIN */
+XB.forEach((p,i)=>{const b=document.createElement("button");b.type="button";
+  b.innerHTML=`<div class="ph"><img src="${src(p.i[0])}" loading="lazy" alt="${p.t}"></div><div><b>${p.t}</b><div class="mono">${p.c}</div></div>`;
+  b.addEventListener("click",()=>openLb(XB,i));$("rail").appendChild(b);});
+
+/* Índice */
+P.forEach((p,i)=>{const b=document.createElement("button");b.type="button";b.className="row";b.dataset.k=p.k;b.dataset.img=p.i[0];
+  b.innerHTML=`<img class="th" src="${src(p.i[0])}" loading="lazy" alt=""><span class="n mono dim">${pad(i)}</span><span class="t">${p.t}</span><span class="c dim">${p.c}</span><span class="k mono dim">${CATS[p.k]} · ${p.y}</span><span class="arr" aria-hidden="true">→</span>`;
+  b.addEventListener("click",()=>openLb(P,i));$("index").appendChild(b);});
+function setFilter(k){let n=0;
+  $("index").querySelectorAll(".row").forEach(r=>{const on=k==="all"||r.dataset.k===k;r.hidden=!on;if(on)n++;});
+  $("filters").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.k===k)));
+  $("count").textContent=n+" trabajos"+(k==="all"?" entre 2022 y 2026.":" de "+CATS[k].toLowerCase()+".");}
+[["all","Todos"],...Object.entries(CATS)].forEach(([k,l])=>{const b=document.createElement("button");b.type="button";b.dataset.k=k;
+  b.innerHTML=`${l} <span class="dim">${k==="all"?P.length:P.filter(p=>p.k===k).length}</span>`;b.addEventListener("click",()=>setFilter(k));$("filters").appendChild(b);});
 setFilter("all");
 
-document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>{
-  setFilter(b.dataset.go);$("proyectos").scrollIntoView({behavior:"smooth"});
-}));
-document.querySelectorAll("[data-open]").forEach(b=>b.addEventListener("click",()=>openLb(P,+b.dataset.open)));
+/* Vista previa que sigue al cursor en el índice */
+if(fine){const pk=$("peek"),pimg=$("peek-img");let x=0,y=0,tx=0,ty=0,raf=0;
+  function loop(){x+=(tx-x)*.18;y+=(ty-y)*.18;pk.style.left=x+"px";pk.style.top=y+"px";raf=requestAnimationFrame(loop);}
+  $("index").addEventListener("mousemove",e=>{tx=e.clientX+160;ty=e.clientY;const r=e.target.closest(".row");if(r&&pimg.dataset.cur!==r.dataset.img){pimg.src=src(r.dataset.img);pimg.dataset.cur=r.dataset.img;}});
+  $("index").addEventListener("mouseenter",e=>{x=tx=e.clientX+160;y=ty=e.clientY;pk.classList.add("on");if(!raf)loop();});
+  $("index").addEventListener("mouseleave",()=>{pk.classList.remove("on");cancelAnimationFrame(raf);raf=0;});}
 
-/* Header: transparente sobre la portada, sólido al bajar */
-const hdr=$("hdr");
-function onScroll(){const s=window.scrollY>window.innerHeight*0.6;hdr.classList.toggle("solid",s);document.body.classList.toggle("solid",s);}
-window.addEventListener("scroll",onScroll,{passive:true});onScroll();
+/* Paso a paso */
+document.querySelectorAll("[data-open]").forEach(b=>b.addEventListener("click",()=>openLb(P,+b.dataset.open,+b.dataset.img)));
 
 /* Menú móvil */
-const drawer=$("drawer"),dbg=$("drawer-bg"),mo=$("menu-open");
-function menu(open){drawer.hidden=!open;dbg.hidden=!open;mo.setAttribute("aria-expanded",String(open));document.body.style.overflow=open?"hidden":"";if(open)$("menu-close").focus();}
-mo.onclick=()=>menu(true);$("menu-close").onclick=()=>menu(false);dbg.onclick=()=>menu(false);
-drawer.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>menu(false)));
+const mnav=$("mnav"),mo=$("menu-open");
+function menu(open){mnav.hidden=!open;mo.setAttribute("aria-expanded",String(open));document.body.style.overflow=open?"hidden":"";if(open)$("menu-close").focus();}
+mo.onclick=()=>menu(true);$("menu-close").onclick=()=>menu(false);
+mnav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>menu(false)));
 
 /* Visor */
 const lb=$("lb");let G=P,pi=0,ii=0,lastFocus=null;
-function visible(){return G===P?P.map((_,i)=>i).filter(i=>current==="all"||P[i].k===current):G.map((_,i)=>i);}
-function render(){
-  const p=G[pi];
+function render(){const p=G[pi];
   $("lb-img").src=src(p.i[ii]);$("lb-img").alt=p.t+", imagen "+(ii+1)+" de "+p.i.length;
-  $("lb-title").textContent=p.t;$("lb-cat").textContent=p.c+(p.i.length>1?" · "+(ii+1)+" de "+p.i.length:"");
+  $("lb-title").textContent=p.t;$("lb-cat").textContent=p.c+(p.i.length>1?" · "+(ii+1)+"/"+p.i.length:"");
   $("lb-desc").textContent=p.d;
-  $("lb-dots").innerHTML=p.i.length>1?p.i.map((_,j)=>`<i class="${j===ii?"on":""}"></i>`).join(""):"";
-}
-function openLb(group,i){G=group;pi=i;ii=0;lastFocus=document.activeElement;
-  if(G===P&&current!=="all"&&P[i].k!==current)setFilter("all");
-  lb.hidden=false;document.body.style.overflow="hidden";render();$("lb-close").focus();}
+  $("lb-dots").innerHTML=p.i.length>1?p.i.map((_,j)=>`<i class="${j===ii?"on":""}"></i>`).join(""):"";}
+function openLb(group,i,img){G=group;pi=i;ii=img||0;lastFocus=document.activeElement;lb.hidden=false;document.body.style.overflow="hidden";render();$("lb-close").focus();}
 function closeLb(){lb.hidden=true;document.body.style.overflow="";lastFocus&&lastFocus.focus();}
-function step(dir){
-  const p=G[pi];
+function step(dir){const p=G[pi];
   if(ii+dir>=0&&ii+dir<p.i.length)ii+=dir;
-  else{const v=visible();let pos=v.indexOf(pi);pos=(pos+dir+v.length)%v.length;pi=v[pos];ii=dir>0?0:G[pi].i.length-1;}
-  render();
-}
+  else{pi=(pi+dir+G.length)%G.length;ii=dir>0?0:G[pi].i.length-1;}
+  render();}
 $("lb-close").onclick=closeLb;$("lb-prev").onclick=()=>step(-1);$("lb-next").onclick=()=>step(1);
 lb.addEventListener("click",e=>{if(e.target===lb||e.target.classList.contains("lb-stage"))closeLb();});
-document.addEventListener("keydown",e=>{
-  if(!drawer.hidden&&e.key==="Escape"){menu(false);return;}
-  if(lb.hidden)return;
-  if(e.key==="Escape")closeLb();if(e.key==="ArrowRight")step(1);if(e.key==="ArrowLeft")step(-1);
-});
+document.addEventListener("keydown",e=>{if(!mnav.hidden&&e.key==="Escape"){menu(false);return;}
+  if(lb.hidden)return;if(e.key==="Escape")closeLb();if(e.key==="ArrowRight")step(1);if(e.key==="ArrowLeft")step(-1);});
 let sx=null;
 lb.addEventListener("touchstart",e=>{sx=e.touches[0].clientX},{passive:true});
 lb.addEventListener("touchend",e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)step(dx<0?1:-1);sx=null;});
