@@ -1,0 +1,440 @@
+<title>Jerko Bakulic Diseño</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Portafolio de Jerko Bakulic, diseñador gráfico: material POP, branding, publicidad y campañas B2B.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: estilo showroom. Cada categoría es una pantalla completa con su pieza estrella, título arriba y dos acciones abajo; luego la grilla de proyectos con selector segmentado. Igual en móvil y escritorio. */
+:root{
+  --bg:#ffffff;
+  --surface:#f4f4f4;
+  --fg:#171a20;
+  --fg-2:#5c5e62;
+  --line:#e2e3e3;
+  --primary:#3e6ae1;
+  --primary-hover:#3457b1;
+  --glass:rgba(244,244,244,.68);
+  --glass-hover:rgba(255,255,255,.9);
+  --on-img:#ffffff;
+  --scrim:rgba(0,0,0,.97);
+  --f:"Montserrat","Gotham","Helvetica Neue",Arial,sans-serif;
+  --gl:max(16px, env(safe-area-inset-left, 0px));
+  --gr:max(16px, env(safe-area-inset-right, 0px));
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1012;--surface:#1a1b1e;--fg:#eeeeee;--fg-2:#a2a3a6;--line:#2a2b2f;--glass:rgba(40,41,45,.7);--glass-hover:rgba(60,61,66,.9);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1012;--surface:#1a1b1e;--fg:#eeeeee;--fg-2:#a2a3a6;--line:#2a2b2f;--glass:rgba(40,41,45,.7);--glass-hover:rgba(60,61,66,.9);color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:41;background:transparent;transition:background .3s}
+body.solid::before{background:var(--bg)}
+
+/* Header */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:40;padding-top:env(safe-area-inset-top,0px);transition:background .3s,color .3s}
+.hdr-in{height:56px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+.logo{font-weight:700;letter-spacing:.32em;font-size:13px;text-transform:uppercase;white-space:nowrap}
+.hdr nav{display:flex;gap:4px}
+.hdr nav a,.menu-btn{font-weight:500;font-size:14px;padding:6px 14px;border-radius:4px;transition:background .25s}
+.hdr nav a:hover,.menu-btn:hover{background:rgba(127,127,127,.18)}
+.hdr .right{display:flex;gap:4px;align-items:center}
+.menu-btn{background:none;border:0;color:inherit;font-family:inherit;cursor:pointer}
+.hdr{color:var(--on-img)}
+.hdr.solid{background:var(--bg);color:var(--fg);box-shadow:0 1px 0 var(--line)}
+@media (max-width:1000px){.hdr nav,.hdr .right a{display:none}}
+@media (min-width:1001px){.menu-btn{display:none}}
+
+/* Menú lateral */
+.drawer-bg{position:fixed;inset:0;background:rgba(0,0,0,.35);backdrop-filter:blur(4px);z-index:60}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(330px,100%);background:var(--bg);color:var(--fg);z-index:61;
+  padding:calc(env(safe-area-inset-top,0px) + 16px) max(24px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 24px) 24px;display:flex;flex-direction:column;gap:4px}
+.drawer .x{align-self:flex-end;background:none;border:0;font-size:22px;color:var(--fg);cursor:pointer;width:40px;height:40px;border-radius:4px;margin-bottom:12px}
+.drawer .x:hover{background:var(--surface)}
+.drawer a{font-weight:500;font-size:16px;padding:12px 14px;border-radius:4px}
+.drawer a:hover{background:var(--surface)}
+
+/* Pantallas */
+.panel{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;color:var(--on-img);display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;
+  padding:calc(env(safe-area-inset-top,0px) + 104px) var(--gr) calc(env(safe-area-inset-bottom,0px) + 56px) var(--gl)}
+.panel picture,.panel picture img{position:absolute;inset:0;width:100%;height:100%;max-width:none}
+.panel picture img{object-fit:cover}
+.panel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 38%,rgba(0,0,0,0) 62%,rgba(0,0,0,.45) 100%);pointer-events:none}
+.panel > :not(picture){position:relative;z-index:1}
+.panel h1,.panel h2{margin:0;font-weight:600;font-size:clamp(34px,5vw,44px);line-height:1.15;letter-spacing:-.005em;text-wrap:balance}
+.panel .sub{margin-top:6px;font-size:clamp(14px,1.4vw,16px);font-weight:500;text-wrap:balance;max-width:44ch;margin-inline:auto}
+.panel .sub a{text-decoration:underline;text-underline-offset:3px}
+.actions{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;width:100%}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-width:264px;height:40px;padding:0 24px;border-radius:4px;font:500 14px var(--f);border:0;cursor:pointer;transition:background .3s,color .3s;letter-spacing:.01em}
+.btn.pri{background:var(--primary);color:#fff}
+.btn.pri:hover{background:var(--primary-hover)}
+.btn.sec{background:var(--glass);color:var(--fg);backdrop-filter:blur(8px)}
+.btn.sec:hover{background:var(--glass-hover)}
+.chev{position:absolute;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);left:50%;transform:translateX(-50%);z-index:1;opacity:.85;animation:bob 2s ease-in-out infinite}
+@keyframes bob{50%{transform:translate(-50%,5px)}}
+@media (max-width:640px){
+  .actions{flex-direction:column;align-items:center;gap:12px}
+  .btn{width:100%;max-width:400px;min-width:0}
+  .panel{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 48px)}
+}
+
+/* Dato / marcas */
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;max-width:1100px;margin:0 auto;padding-block:56px;padding-left:var(--gl);padding-right:var(--gr);text-align:center}
+.facts b{display:block;font-size:30px;font-weight:600;letter-spacing:-.01em}
+.facts span{color:var(--fg-2);font-size:13px}
+@media (max-width:640px){.facts{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:32px}}
+.brands{border-block:1px solid var(--line);padding-block:22px;padding-left:var(--gl);padding-right:var(--gr)}
+.brands ul{list-style:none;margin:0 auto;padding:0;max-width:1100px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 34px;font-weight:600;letter-spacing:.22em;font-size:12px;text-transform:uppercase;color:var(--fg-2)}
+
+/* Proyectos */
+.work{padding-block:88px 72px;padding-left:var(--gl);padding-right:var(--gr)}
+.work-in{max-width:1380px;margin:0 auto}
+.work h2{text-align:center;font-weight:600;font-size:clamp(28px,3.5vw,40px);margin:0 0 6px}
+.work .lead{text-align:center;color:var(--fg-2);margin:0 0 28px;font-weight:500}
+.seg-wrap{display:flex;justify-content:center;margin-bottom:40px;overflow-x:auto;scrollbar-width:none}
+.seg{display:inline-flex;background:var(--surface);border-radius:6px;padding:4px;gap:2px}
+.seg button{font:500 14px var(--f);color:var(--fg);background:transparent;border:0;border-radius:4px;padding:8px 16px;cursor:pointer;white-space:nowrap;transition:background .25s,box-shadow .25s}
+.seg button[aria-pressed="true"]{background:var(--bg);box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:40px 24px}
+@media (max-width:640px){.grid{grid-template-columns:1fr;gap:32px}.seg-wrap{justify-content:flex-start}}
+.item{background:none;border:0;padding:0;text-align:center;font:inherit;color:inherit;cursor:pointer;display:flex;flex-direction:column;gap:14px}
+.item[hidden]{display:none!important}
+.item .ph{position:relative;aspect-ratio:4/3;max-width:100%;overflow:hidden;border-radius:4px;background:var(--surface)}
+.item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.item:hover img{transform:scale(1.04)}
+.item .n{position:absolute;bottom:10px;right:10px;background:rgba(23,26,32,.75);color:#fff;font-size:11px;font-weight:600;padding:3px 8px;border-radius:3px}
+.item h3{margin:0;font-weight:600;font-size:17px}
+.item p{margin:2px 0 0;color:var(--fg-2);font-size:13px;font-weight:500}
+.item .more{font-size:13px;font-weight:500;text-decoration:underline;text-underline-offset:4px;color:var(--fg)}
+
+/* XBREIN */
+.xb{background:var(--surface);padding-block:88px;padding-left:var(--gl);padding-right:var(--gr)}
+.xb-in{max-width:1380px;margin:0 auto}
+.xb h2{text-align:center;font-weight:600;font-size:clamp(28px,3.5vw,40px);margin:0 0 8px}
+.xb .lead{text-align:center;color:var(--fg-2);max-width:62ch;margin:0 auto 36px;font-weight:500}
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(240px,22%);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;scrollbar-width:thin}
+.rail .item{scroll-snap-align:start}
+.rail .item .ph{aspect-ratio:4/5;background:#fff}
+.rail .item img{object-fit:contain}
+@media (max-width:640px){.rail{grid-auto-columns:78%}}
+.xb-foot{text-align:center;margin-top:28px}
+
+/* Contacto */
+.contact{padding-block:96px;padding-left:var(--gl);padding-right:var(--gr);text-align:center}
+.contact h2{font-weight:600;font-size:clamp(28px,3.5vw,40px);margin:0 0 8px}
+.contact p{color:var(--fg-2);margin:0 0 32px;font-weight:500}
+.contact .actions .btn.sec{background:var(--surface)}
+.contact .actions .btn.sec:hover{background:var(--line)}
+footer{padding-block:24px calc(env(safe-area-inset-bottom,0px) + 24px);padding-left:var(--gl);padding-right:var(--gr);text-align:center;font-size:12px;color:var(--fg-2);display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+
+/* Visor */
+.lb{position:fixed;inset:0;z-index:70;background:var(--scrim);color:#fff;display:grid;grid-template-rows:auto minmax(0,1fr) auto;
+  padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)}
+.lb-top,.lb-bot{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 20px}
+.lb-top h3{margin:0;font-size:16px;font-weight:600}
+.lb-top span{color:#a9abb0;font-size:13px;font-weight:500}
+.lb-stage{position:relative;display:flex;align-items:center;justify-content:center;min-height:0;padding:0 64px}
+.lb-stage img{max-width:100%;max-height:100%;object-fit:contain;border-radius:2px}
+.lb .ic{background:rgba(255,255,255,.12);border:0;color:#fff;width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:18px;display:grid;place-items:center;transition:background .2s}
+.lb .ic:hover{background:rgba(255,255,255,.28)}
+.lb .prev,.lb .next{position:absolute;top:50%;transform:translateY(-50%)}
+.lb .prev{left:12px}.lb .next{right:12px}
+.lb-bot p{margin:0;max-width:70ch;color:#d4d5d8;font-size:14px}
+.dots{display:flex;gap:6px;flex:none}
+.dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3)}
+.dots i.on{background:#fff}
+@media (max-width:640px){
+  .lb-stage{padding:0}
+  .lb .prev,.lb .next{top:auto;bottom:-58px;transform:none}
+  .lb .prev{left:20px}.lb .next{right:20px}
+  .lb-bot{flex-direction:column-reverse;align-items:center;text-align:center;padding-top:20px;padding-bottom:20px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style>
+
+<header class="hdr" id="hdr">
+  <div class="hdr-in">
+    <a class="logo" href="#inicio">Jerko Bakulic</a>
+    <nav aria-label="Principal">
+      <a href="#pop">Material POP</a>
+      <a href="#branding">Branding</a>
+      <a href="#publicidad">Publicidad</a>
+      <a href="#xbrein">XBREIN</a>
+      <a href="#proyectos">Proyectos</a>
+    </nav>
+    <div class="right">
+      <a href="#contacto">Contacto</a>
+      <button class="menu-btn" id="menu-open" type="button" aria-controls="drawer" aria-expanded="false">Menú</button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer-bg" id="drawer-bg" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-label="Menú">
+  <button class="x" id="menu-close" type="button" aria-label="Cerrar menú">✕</button>
+  <a href="#pop">Material POP</a>
+  <a href="#branding">Branding</a>
+  <a href="#publicidad">Publicidad</a>
+  <a href="#foto">Foto y retoque</a>
+  <a href="#eventos">Eventos y stands</a>
+  <a href="#xbrein">XBREIN</a>
+  <a href="#proyectos">Todos los proyectos</a>
+  <a href="#contacto">Contacto</a>
+</aside>
+
+<main>
+  <section class="panel" id="inicio">
+    <picture>
+      <source media="(max-width:640px)" srcset="w/CnO5SO-uxof-0.webp">
+      <img src="w/CnUXn6yuQcG-0.webp" alt="Auto de drift con humo, retoque fotográfico">
+    </picture>
+    <div>
+      <h1>Jerko Bakulic</h1>
+      <p class="sub">Diseñador gráfico · Material POP, branding y publicidad</p>
+    </div>
+    <div class="actions">
+      <a class="btn pri" href="#proyectos">Ver proyectos</a>
+      <a class="btn sec" href="#contacto">Contactar</a>
+    </div>
+    <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+  </section>
+
+  <div class="facts" aria-label="Resumen">
+    <div><b>22</b><span>proyectos en este portafolio</span></div>
+    <div><b>9+</b><span>marcas atendidas</span></div>
+    <div><b>5</b><span>disciplinas, del archivo al punto de venta</span></div>
+    <div><b>3</b><span>marcas como coach visual: Hyundai, Casio y Duracell</span></div>
+  </div>
+  <div class="brands"><ul><li>Hyundai</li><li>Casio</li><li>Duracell</li><li>Meguiar's</li><li>MaxShine</li><li>Derco</li><li>3M</li><li>B2B Media Group</li><li>XBREIN</li></ul></div>
+
+  <section class="panel" id="pop">
+    <picture>
+      <source media="(max-width:640px)" srcset="w/Cg1XtjIOdhf-2.webp">
+      <img src="w/Cg1YCo1OfCI-0.webp" alt="Showroom con exhibidores de Meguiar's" loading="lazy">
+    </picture>
+    <div>
+      <h2>Material POP</h2>
+      <p class="sub">Exhibidores, columnas, packaging y kits para Meguiar's, MaxShine, Derco y Wynn's</p>
+    </div>
+    <div class="actions">
+      <button class="btn pri" type="button" data-go="pop">Ver material POP</button>
+      <button class="btn sec" type="button" data-open="0">Kit Meguiar's</button>
+    </div>
+  </section>
+
+  <section class="panel" id="branding">
+    <picture>
+      <source media="(max-width:640px)" srcset="w/CpAjVepuS7c-0.webp">
+      <img src="w/CnO6OxhuD02-0.webp" alt="Polera corporativa de Herco Equipments con ilustración de camión minero" loading="lazy">
+    </picture>
+    <div>
+      <h2>Branding</h2>
+      <p class="sub">Logotipos e identidad aplicada para empresas en Chile y Estados Unidos</p>
+    </div>
+    <div class="actions">
+      <button class="btn pri" type="button" data-go="brand">Ver branding</button>
+      <button class="btn sec" type="button" data-open="7">Herco Equipments</button>
+    </div>
+  </section>
+
+  <section class="panel" id="publicidad">
+    <picture>
+      <source media="(max-width:640px)" srcset="w/CnO5EjvubJ8-0.webp">
+      <img src="w/CnO5QPsukKX-0.webp" alt="Publicidad de pintura automotriz 3M" loading="lazy">
+    </picture>
+    <div>
+      <h2>Publicidad y redes</h2>
+      <p class="sub">Campañas y contenido para Hyundai, Casio, MaxShine, 3M y B2B Media Group</p>
+    </div>
+    <div class="actions">
+      <button class="btn pri" type="button" data-go="ads">Ver publicidad</button>
+      <button class="btn sec" type="button" data-open="12">Hyundai Technology</button>
+    </div>
+  </section>
+
+  <section class="panel" id="foto">
+    <picture>
+      <source media="(max-width:640px)" srcset="w/CnUXn6yuQcG-1.webp">
+      <img src="w/CnO5sufOzPI-0.webp" alt="Fotografía de producto: pad de pulido verde" loading="lazy">
+    </picture>
+    <div>
+      <h2>Foto y retoque</h2>
+      <p class="sub">Fotografía de producto, retoque y composición para campañas</p>
+    </div>
+    <div class="actions">
+      <button class="btn pri" type="button" data-go="foto">Ver fotografía</button>
+    </div>
+  </section>
+
+  <section class="panel" id="eventos">
+    <picture>
+      <source media="(max-width:640px)" srcset="w/Cyy0sqaOkYY-0.webp">
+      <img src="w/Cyy0sqaOkYY-4.webp" alt="Auditorio del encuentro ElecGas 2023" loading="lazy">
+    </picture>
+    <div>
+      <h2>Eventos y stands</h2>
+      <p class="sub">Stands, muros de prensa y gráfica de escenario</p>
+    </div>
+    <div class="actions">
+      <button class="btn pri" type="button" data-go="event">Ver eventos</button>
+      <button class="btn sec" type="button" data-open="20">ElecGas 2023</button>
+    </div>
+  </section>
+
+  <section class="xb" id="xbrein">
+    <div class="xb-in">
+      <h2>XBREIN · Publicidad B2B</h2>
+      <p class="lead">Línea gráfica para la empresa de geointeligencia con operación en 20 países: piezas de CBREIN (consumo masivo), TBREIN (marketing) y anuncios para Expo Franquicias Guadalajara y Endeavor México.</p>
+      <div class="rail" id="rail"></div>
+      <div class="xb-foot"><a class="btn sec" style="background:var(--bg)" href="https://www.linkedin.com/company/xbrein/" target="_blank" rel="noopener">Ver XBREIN en LinkedIn</a></div>
+    </div>
+  </section>
+
+  <section class="work" id="proyectos">
+    <div class="work-in">
+      <h2>Proyectos</h2>
+      <p class="lead" id="count"></p>
+      <div class="seg-wrap"><div class="seg" role="group" aria-label="Filtrar proyectos" id="seg"></div></div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="contact" id="contacto">
+    <h2>Hablemos de tu marca</h2>
+    <p>Escríbeme por Instagram y te respondo a la brevedad.</p>
+    <div class="actions">
+      <a class="btn pri" href="https://www.instagram.com/bakulicdiseno/" target="_blank" rel="noopener">Instagram @bakulicdiseno</a>
+      <a class="btn sec" href="https://www.linkedin.com/company/xbrein/" target="_blank" rel="noopener">LinkedIn XBREIN</a>
+    </div>
+  </section>
+</main>
+
+<footer><span>Jerko Bakulic © 2026</span><span>Diseño gráfico · Chile</span></footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lb-title">
+  <div class="lb-top"><div><h3 id="lb-title"></h3><span id="lb-cat"></span></div><button class="ic" type="button" id="lb-close" aria-label="Cerrar">✕</button></div>
+  <div class="lb-stage">
+    <button class="ic prev" type="button" id="lb-prev" aria-label="Anterior">←</button>
+    <img id="lb-img" alt="">
+    <button class="ic next" type="button" id="lb-next" aria-label="Siguiente">→</button>
+  </div>
+  <div class="lb-bot"><p id="lb-desc"></p><div class="dots" id="lb-dots"></div></div>
+</div>
+
+<script>
+const CATS={pop:"Material POP",brand:"Branding",ads:"Publicidad",foto:"Foto y retoque",event:"Eventos"};
+const P=[
+ {t:"Kit Bienvenido a la familia",c:"Meguiar's",k:"pop",d:"Exhibidores de mesón y de piso para el lanzamiento del kit, con la caja de bienvenida diseñada para la misma campaña.",i:["ChQa5NGOecd-0","CnO5KfzOT7z-0","CnO5OPfuC_8-0","Cg1X9F3u8oA-0","Cg1X9F3u8oA-1","Cg1X9F3u8oA-2","Cg1X9F3u8oA-3"]},
+ {t:"Exhibidores de piso",c:"MaxShine",k:"pop",d:"Torres de exhibición con gráfica completa en rojo y negro de la marca, más el delantal de taller a juego.",i:["CnO5opuOJdo-0","CnO5m0NOLXj-0","CnO5qkEuVaO-0"]},
+ {t:"Columnas de showroom",c:"Meguiar's · Wynn's",k:"pop",d:"Revestimiento de columnas con vinilo impreso, de diseño a instalación, para el showroom de la distribuidora.",i:["Cg1XtjIOdhf-2","Cg1XtjIOdhf-0","Cg1XtjIOdhf-1","Cg1XtjIOdhf-3","CgkVmqbu-mY-0","Cg1YCo1OfCI-0"]},
+ {t:"Exhibidor Dercocenter",c:"Derco",k:"pop",d:"Exhibidor de mesón con cabezal de marca para puntos de venta Dercocenter.",i:["CiSnMWHODQj-1","CiSnMWHODQj-0"]},
+ {t:"Rack de producto",c:"Meguiar's",k:"pop",d:"Estantería metálica con laterales gráficos para tiendas especializadas.",i:["CnO5k_MuSVe-0"]},
+ {t:"Packaging Air Clean Pack",c:"Wynn's",k:"pop",d:"Caja para el tratamiento de aire acondicionado, con información de uso y beneficios en las caras laterales.",i:["CnO5MVgurbg-0"]},
+ {t:"Florida Exporter Dealer",c:"Logotipo · Estados Unidos",k:"brand",d:"Logotipo para un exportador de Florida, Estados Unidos.",i:["Ca29vXFOBmR-0"]},
+ {t:"Herco Equipments",c:"Minería y construcción",k:"brand",d:"Logotipo aplicado en oficinas de Texas, ilustración del camión CAEX para polera corporativa y piezas de comunicación.",i:["Ca29W4FOAH--0","CnO6MlluU9F-0","CnO6OxhuD02-0","CnnzL4lDPit-0","Ca29TJiO4Tn-0"]},
+ {t:"HTP Component Clinic",c:"Logotipo",k:"brand",d:"Marca para un taller de reparación de componentes.",i:["CbOHEY1OhGA-0"]},
+ {t:"Casa Terapia",c:"Logotipo",k:"brand",d:"Dos propuestas de logotipo para un centro de terapias.",i:["CpAjVepuS7c-0"]},
+ {t:"LOA Importadora",c:"Logotipo",k:"brand",d:"Identidad para una importadora.",i:["CbOHY57OvUX-0"]},
+ {t:"Sello Productos Warless",c:"Meguiar's",k:"brand",d:"Sello para comunicar la línea de productos que no necesitan agua.",i:["CnO5GhEOfzi-0"]},
+ {t:"Hyundai Technology",c:"Campaña en redes",k:"ads",d:"Piezas para notebooks y tablets de Hyundai Technology.",i:["Ca29ee5OgEz-0","Ca29ax-Oard-0","Ca29ccUu7dv-0"]},
+ {t:"La historia de Casio",c:"Casio",k:"ads",d:"Portada de contenido para redes de Casio.",i:["Ca29liNukhJ-0"]},
+ {t:"Fechas especiales",c:"MaxShine",k:"ads",d:"Año Nuevo 2023 y concurso del Día del Niño para las redes de MaxShine.",i:["CnO5EjvubJ8-0","CnO5UdIu82N-0"]},
+ {t:"20% en Mercado Libre",c:"Promoción",k:"ads",d:"Pieza promocional para la tienda oficial en Mercado Libre.",i:["Cg1XrCqO0sU-0"]},
+ {t:"Hazlo bien a la primera",c:"3M",k:"ads",d:"Diagramación de publicidad para pintura automotriz 3M.",i:["CnO5QPsukKX-0"]},
+ {t:"Conferencia Los Lagos",c:"B2B Media Group",k:"ads",d:"Campaña de inscripciones para la X Conferencia Los Lagos Aqua Forum, y el hito de 200 mil seguidores de revista Minería.",i:["Cyy0dG3uQ4H-0","Cyy0dG3uQ4H-1","Cyy0jVbuxh7-0"]},
+ {t:"Retoque de drift",c:"Retoque fotográfico",k:"foto",d:"Retoque y composición de fotografía de competencia.",i:["CnUXn6yuQcG-0","CnUXn6yuQcG-1"]},
+ {t:"Fotografía de producto",c:"MaxShine",k:"foto",d:"Fotografía y retoque de pads de pulido.",i:["CnO5sufOzPI-0"]},
+ {t:"Stand ElecGas 2023",c:"B2B Media Group",k:"event",d:"Stand, muro de prensa y gráfica de pantalla para el encuentro ElecGas 2023.",i:["Cyy0sqaOkYY-0","Cyy0sqaOkYY-1","Cyy0sqaOkYY-2","Cyy0sqaOkYY-3","Cyy0sqaOkYY-4"]},
+ {t:"Lamborghini en rojo",c:"Composición",k:"foto",d:"Composición para campaña con tratamiento de color monocromo.",i:["CnO5SO-uxof-0"]},
+ {t:"Stand Car and Coffee",c:"Montaje",k:"event",d:"Montaje de stand para el evento Car and Coffee.",i:["CnO6RKNuwHI-0"]}
+];
+const XB=[
+ {t:"Mide la canibalización",c:"XBREIN",d:"Key visual de location intelligence para franquicias.",i:["xb-2-0"]},
+ {t:"Detectamos dónde está la demanda",c:"CBREIN · Consumo masivo",d:"Pieza de la línea CBREIN.",i:["xb-10-0"]},
+ {t:"Comercios que aún no te compran",c:"CBREIN · Consumo masivo",d:"Pieza de la línea CBREIN.",i:["xb-16-0"]},
+ {t:"Comercios que tu marca no atiende",c:"CBREIN · Consumo masivo",d:"Pieza de la línea CBREIN.",i:["xb-4-0"]},
+ {t:"Territorio en prospección",c:"CBREIN · Consumo masivo",d:"Pieza de la línea CBREIN.",i:["xb-5-0"]},
+ {t:"Fuerza de ventas al comercio correcto",c:"CBREIN · Consumo masivo",d:"Pieza de la línea CBREIN.",i:["xb-21-0"]},
+ {t:"Clonación de mercado",c:"TBREIN · MarTech",d:"Pieza de la línea TBREIN.",i:["xb-22-0"]},
+ {t:"Leads calificados",c:"TBREIN · MarTech",d:"Pieza de la línea TBREIN.",i:["xb-27-0"]},
+ {t:"Expo Franquicias Guadalajara",c:"Evento",d:"Anuncio de charla para Expo Franquicias Guadalajara.",i:["xb-0-0"]},
+ {t:"XBREIN en Endeavor",c:"Evento",d:"Anuncio de charla para Endeavor México.",i:["xb-3-0"]}
+];
+const src=id=>"w/"+id+".webp";
+const $=id=>document.getElementById(id);
+
+function item(p,idx,group,withMore){
+  const b=document.createElement("button");
+  b.type="button";b.className="item";b.dataset.k=p.k||"";
+  b.innerHTML=`<div class="ph"><img src="${src(p.i[0])}" loading="lazy" alt="${p.t}, ${p.c}">${p.i.length>1?`<span class="n">${p.i.length} fotos</span>`:""}</div>
+  <div><h3>${p.t}</h3><p>${p.c}</p></div>${withMore?`<span class="more">Ver proyecto</span>`:""}`;
+  b.addEventListener("click",()=>openLb(group,idx));
+  return b;
+}
+P.forEach((p,i)=>$("grid").appendChild(item(p,i,P,true)));
+XB.forEach((p,i)=>$("rail").appendChild(item(p,i,XB,false)));
+
+let current="all";
+function setFilter(k){
+  current=k;let n=0;
+  $("grid").querySelectorAll(".item").forEach(c=>{const on=k==="all"||c.dataset.k===k;c.hidden=!on;if(on)n++;});
+  $("seg").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.k===k)));
+  $("count").textContent=n+(n===1?" proyecto":" proyectos")+(k==="all"?"":" en "+CATS[k]);
+}
+[["all","Todos"],...Object.entries(CATS)].forEach(([k,l])=>{
+  const b=document.createElement("button");b.type="button";b.dataset.k=k;b.textContent=l;
+  b.addEventListener("click",()=>setFilter(k));$("seg").appendChild(b);
+});
+setFilter("all");
+
+document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>{
+  setFilter(b.dataset.go);$("proyectos").scrollIntoView({behavior:"smooth"});
+}));
+document.querySelectorAll("[data-open]").forEach(b=>b.addEventListener("click",()=>openLb(P,+b.dataset.open)));
+
+/* Header: transparente sobre la portada, sólido al bajar */
+const hdr=$("hdr");
+function onScroll(){const s=window.scrollY>window.innerHeight*0.6;hdr.classList.toggle("solid",s);document.body.classList.toggle("solid",s);}
+window.addEventListener("scroll",onScroll,{passive:true});onScroll();
+
+/* Menú móvil */
+const drawer=$("drawer"),dbg=$("drawer-bg"),mo=$("menu-open");
+function menu(open){drawer.hidden=!open;dbg.hidden=!open;mo.setAttribute("aria-expanded",String(open));document.body.style.overflow=open?"hidden":"";if(open)$("menu-close").focus();}
+mo.onclick=()=>menu(true);$("menu-close").onclick=()=>menu(false);dbg.onclick=()=>menu(false);
+drawer.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>menu(false)));
+
+/* Visor */
+const lb=$("lb");let G=P,pi=0,ii=0,lastFocus=null;
+function visible(){return G===P?P.map((_,i)=>i).filter(i=>current==="all"||P[i].k===current):G.map((_,i)=>i);}
+function render(){
+  const p=G[pi];
+  $("lb-img").src=src(p.i[ii]);$("lb-img").alt=p.t+", imagen "+(ii+1)+" de "+p.i.length;
+  $("lb-title").textContent=p.t;$("lb-cat").textContent=p.c+(p.i.length>1?" · "+(ii+1)+" de "+p.i.length:"");
+  $("lb-desc").textContent=p.d;
+  $("lb-dots").innerHTML=p.i.length>1?p.i.map((_,j)=>`<i class="${j===ii?"on":""}"></i>`).join(""):"";
+}
+function openLb(group,i){G=group;pi=i;ii=0;lastFocus=document.activeElement;
+  if(G===P&&current!=="all"&&P[i].k!==current)setFilter("all");
+  lb.hidden=false;document.body.style.overflow="hidden";render();$("lb-close").focus();}
+function closeLb(){lb.hidden=true;document.body.style.overflow="";lastFocus&&lastFocus.focus();}
+function step(dir){
+  const p=G[pi];
+  if(ii+dir>=0&&ii+dir<p.i.length)ii+=dir;
+  else{const v=visible();let pos=v.indexOf(pi);pos=(pos+dir+v.length)%v.length;pi=v[pos];ii=dir>0?0:G[pi].i.length-1;}
+  render();
+}
+$("lb-close").onclick=closeLb;$("lb-prev").onclick=()=>step(-1);$("lb-next").onclick=()=>step(1);
+lb.addEventListener("click",e=>{if(e.target===lb||e.target.classList.contains("lb-stage"))closeLb();});
+document.addEventListener("keydown",e=>{
+  if(!drawer.hidden&&e.key==="Escape"){menu(false);return;}
+  if(lb.hidden)return;
+  if(e.key==="Escape")closeLb();if(e.key==="ArrowRight")step(1);if(e.key==="ArrowLeft")step(-1);
+});
+let sx=null;
+lb.addEventListener("touchstart",e=>{sx=e.touches[0].clientX},{passive:true});
+lb.addEventListener("touchend",e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)step(dx<0?1:-1);sx=null;});
+</script>
